@@ -2,7 +2,7 @@
     "tasks": [
         {
             "source": "https://username:password@github.com/username/source-repo.git",
-            "branch": "5.0",
+            "branch": "master",
             "subtree": "a/subtree/directory",
             "destination": "https://username:password@github.com/username/dest-repo.git"
         }

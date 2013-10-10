@@ -10,7 +10,8 @@ config['tasks'].each do |task|
 
     cmd = "git clone " + task['source'] + " --branch " + task['branch'] + " tmp/ && "
     cmd += "cd tmp/ && "
-    cmd += "git subtree split --prefix=" + task['subtree'] + " --branch=splitted && "
+    #cmd += "git subtree split --prefix=" + task['subtree'] + " --branch=splitted && "
+    cmd += "git-subtree split --prefix=" + task['subtree'] + " --branch=splitted && "
     cmd += "git push " + task['destination'] + " splitted:" + task['branch']
     print "> " + cmd + "\n"
 

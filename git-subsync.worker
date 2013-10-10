@@ -1,5 +1,6 @@
 runtime "ruby"
 
 file "config.json"
+dir "git-subtree/git-subtree"
 
 exec "run.rb"
