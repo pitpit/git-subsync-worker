@@ -1,6 +1,10 @@
+full_remote_build true
+
 runtime "ruby"
 
 file "config.json"
-dir "git-subtree/git-subtree"
+
+deb "git_1.7.9.5-1_amd64.deb"
+deb "git-subtree.deb"
 
 exec "run.rb"
