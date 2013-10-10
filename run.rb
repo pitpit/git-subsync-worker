@@ -24,7 +24,7 @@ else
     repositories = config['repositories']
 end
 
-cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
+cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && export GIT_SSL_NO_VERIFY=true && "
 # cmd = ""
 repositories.each do |repository|
     uri = URI(repository['source'])
