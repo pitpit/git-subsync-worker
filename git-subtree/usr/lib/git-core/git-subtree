@@ -325,13 +325,13 @@ add_msg()
     else
         commit_message="Add '$dir/' from commit '$latest_new'"
     fi
-    cat <<-EOF
-        $commit_message
+cat <<-EOF
+    $commit_message
 
-        git-subtree-dir: $dir
-        git-subtree-mainline: $latest_old
-        git-subtree-split: $latest_new
-    EOF
+    git-subtree-dir: $dir
+    git-subtree-mainline: $latest_old
+    git-subtree-split: $latest_new
+EOF
 }
 
 add_squashed_msg()
@@ -353,13 +353,13 @@ rejoin_msg()
     else
         commit_message="Split '$dir/' into commit '$latest_new'"
     fi
-    cat <<-EOF
-        $commit_message
+cat <<-EOF
+    $commit_message
 
-        git-subtree-dir: $dir
-        git-subtree-mainline: $latest_old
-        git-subtree-split: $latest_new
-    EOF
+    git-subtree-dir: $dir
+    git-subtree-mainline: $latest_old
+    git-subtree-split: $latest_new
+EOF
 }
 
 squash_msg()
