@@ -1,0 +1,7 @@
+Package: git-subtree
+Version: 0.1-0
+Priority: optional
+Architecture: all
+Depends: git
+Maintainer: damien.pitard@gmail.com
+Description: Add subtree command support to git

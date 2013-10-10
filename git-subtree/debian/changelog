@@ -1,0 +1,5 @@
+git-subtree (1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <root@unknown>  Thu, 10 Oct 2013 15:18:11 +0200
