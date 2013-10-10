@@ -1,5 +1,6 @@
 require "json"
 require "uri"
+require 'digest/md5'
 
 config = JSON.parse(IO.read("config.json"), {"symbolize_names" => true})
 
@@ -9,11 +10,11 @@ if params['repository'] and params['repository']['url']
     currentUri = URI(params['repository']['url'])
     repositories = []
 
-    config['repositories'].each do |task|
-        sourceUri = URI(task['source'])
+    config['repositories'].each do |repository|
+        sourceUri = URI(repository['source'])
         if currentUri.host + currentUri.path == sourceUri.host + sourceUri.path
 
-            repositories.push(task)
+            repositories.push(repository)
 
             #todo check in commits that there is added, modified or deleted file in correpsonding subtree (do nothing if not)
             #...
@@ -23,13 +24,23 @@ else
     repositories = config['repositories']
 end
 
-cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
+# cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
+cmd = ""
 repositories.each do |repository|
-    cmd += "git clone " + repository['source'] + " --branch " + repository['branch'] + " tmp/ && "
-    cmd += "cd tmp/ && "
-    cmd += "git subtree split -q --prefix=" + repository['subtree'] + " --branch=splitted && "
-    cmd += "git push " + repository['destination'] + " splitted:" + repository['branch'] + " && "
-    cmd += "cd .. && rm -rf tmp/ ; "
+    uri = URI(repository['source'])
+    dir = Digest::MD5.hexdigest(uri.host + uri.path)
+
+    cmd += "git clone " + repository['source'] + " --branch " + repository['branch'] + " " + dir + " && "
+    cmd += "cd " + dir + ";\n"
+
+    repository['subtrees'].each do |subtree|
+        branch = Digest::MD5.hexdigest(subtree['path'])
+
+        cmd += "git subtree split -q --prefix=" + subtree['path'] + " --branch=" + branch + " && "
+        cmd += "git push " + subtree['dest'] + " " + branch + ":" + subtree['branch'] + ";\n"
+    end
+
+    cmd += "cd .. && rm -rf " + dir + ";"
 end
 
 if (params['dry-run'])
