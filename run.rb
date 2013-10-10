@@ -24,8 +24,8 @@ else
     repositories = config['repositories']
 end
 
-# cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
-cmd = ""
+cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
+# cmd = ""
 repositories.each do |repository|
     uri = URI(repository['source'])
     dir = Digest::MD5.hexdigest(uri.host + uri.path)
