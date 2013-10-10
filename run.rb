@@ -8,32 +8,32 @@ if params['repository'] and params['repository']['url']
 
     currentUri = URI(params['repository']['url'])
     repositories = []
+
     config['repositories'].each do |task|
         sourceUri = URI(task['source'])
-        if currentUri.host +  currentUri.path == sourceUri.host + sourceUri.path
+        if currentUri.host + currentUri.path == sourceUri.host + sourceUri.path
 
-            #the repository is configured
             repositories.push(task)
 
             #todo check in commits that there is added, modified or deleted file in correpsonding subtree (do nothing if not)
+            #...
         end
     end
 else
     repositories = config['repositories']
 end
 
+cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
 repositories.each do |repository|
-    cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && "
     cmd += "git clone " + repository['source'] + " --branch " + repository['branch'] + " tmp/ && "
     cmd += "cd tmp/ && "
     cmd += "git subtree split -q --prefix=" + repository['subtree'] + " --branch=splitted && "
     cmd += "git push " + repository['destination'] + " splitted:" + repository['branch'] + " && "
-    cmd += "cd .. && rm -rf tmp/"
+    cmd += "cd .. && rm -rf tmp/ ; "
+end
 
-    if (params['dry-run'])
-        print "> " + cmd + "\n"
-    else
-        exec(cmd)
-        print "imported " + repository['subtree']
-    end
+if (params['dry-run'])
+    print "> " + cmd + "\n"
+else
+    exec(cmd)
 end
