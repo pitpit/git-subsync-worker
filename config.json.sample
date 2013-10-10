@@ -4,7 +4,7 @@
             "source": "https://username:password@github.com/username/source-repo.git",
             "branch": "5.0",
             "subtree": "a/subtree/directory",
-            "destination": "https://username:password@github.com/username/dest-reposgit"
+            "destination": "https://username:password@github.com/username/dest-repo.git"
         }
     ]
 }
