@@ -30,13 +30,15 @@ iron_worker run git-subsync.worker -p '{"dry-run":true}'
 iron_worker upload git-subsync.worker
 ```
 
-
-
 Schedule or Webhook
+-------------------
+
+...
 
 Build the deb package
+---------------------
 
-Actual version of git-core on iron VM (Ubuntu Linux 12.04 x64) is 1.7.9.3 which doesn't support "subtree" command
+Actual version of git-core on iron VM (v1.7.9.3 on Ubuntu Linux 12.04 x64) doesn't support "subtree" command.
 So we need to build a deb package to add the original git-subtree script (https://github.com/apenwarr/git-subtree/tree/master)
 
     sudo dpkg-deb --build git-subtree

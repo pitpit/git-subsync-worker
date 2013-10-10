@@ -1,5 +1,11 @@
 {
-    "tasks": [
+    "repositories": [
+        {
+            "source": "https://username:password@github.com/username/source-repo.git",
+            "branch": "master",
+            "subtree": "a/subtree/directory",
+            "destination": "https://username:password@github.com/username/dest-repo.git"
+        },
         {
             "source": "https://username:password@github.com/username/source-repo.git",
             "branch": "master",
