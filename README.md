@@ -18,12 +18,6 @@ Installation
 
 > for now, the worker does not support public key negociation over ssh, so you need to use the HTTP URL of your repository with credentials in it. For instance: `https://username:password@github.com/username/dest-repo.git`
 
-* test the worker locally:
-
-```
-iron_worker run git-subsync.worker -p '{"dry-run":true}'
-```
-
 * upload the worker:
 
 ```
