@@ -6,7 +6,7 @@ An iron worker (iron.io) to sync a subtree split from a git repository to anothe
 Installation
 ------------
 
-* Sinup on [Iron IO](http://iron.io) and create a new project
+* Signup on [Iron IO](http://iron.io) and create a new project
 
 * [Install Iron CLI](http://dev.iron.io/worker/reference/cli/#installing)
 
