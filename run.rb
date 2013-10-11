@@ -61,7 +61,7 @@ if repositories.count > 0
 
                 branch = Digest::MD5.hexdigest(subtree['path'])
                 cmd += " && git subtree -q split --prefix=" + subtree['path'] + " --branch=" + branch
-                cmd += " && git push " + subtree['dest'] + " " + branch + ":" + subtree['branch']
+                cmd += " && git push --force " + subtree['dest'] + " " + branch + ":" + subtree['branch']
             end
 
             cmd += " && cd .. && rm -rf " + dir + ";"

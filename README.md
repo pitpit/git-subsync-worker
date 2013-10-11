@@ -1,7 +1,7 @@
 Git Subsync Worker
 ==================
 
-An iron worker (iron.io) to sync a subtree split from a git repository to another one.
+An iron worker (http://iron.io) to sync a subtree split from a git repository to another one.
 
 Installation
 ------------
@@ -24,10 +24,23 @@ Installation
 iron_worker upload git-subsync.worker
 ```
 
-Schedule or Webhook
--------------------
+Sync everything
+---------------
 
-...
+Queue a task to synchronize every subtrees:
+
+
+    iron_worker queue git-subsync
+
+Github Webhook
+--------------
+
+If you want to sync subtree on commit:
+
+    iron_worker webhook git-subsync
+
+And copy-paste the URL into Github: "Your Repository" > "Settings" > "Services Hooks" > "WebHook URLs"
+
 
 Build the deb package
 ---------------------
