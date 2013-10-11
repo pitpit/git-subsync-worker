@@ -1,3 +1,4 @@
 config.json
 iron.json
 __debs__/
+.DS_Store
