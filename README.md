@@ -1,7 +1,7 @@
 Git Subsync Worker
 ==================
 
-An iron worker (http://iron.io) to sync a subtree split from a git repository to another one.
+An iron worker (http://iron.io) to sync a subtree split of a git repository to another one.
 
 Installation
 ------------
@@ -16,7 +16,13 @@ Installation
 
 * copy `config.json.sample` to `config.json` and edit it according to your needs
 
-> for now, the worker does not support public key negociation over ssh, so you need to use the HTTP URL of your repository with credentials in it. For instance: `https://username:password@github.com/username/dest-repo.git`
+* Generate SSH keys if needed to connect to your repositories
+
+```
+ssh-keygen -t rsa -C "sync-workers" -f id_rsa
+```
+
+* add the public key content to your github account (https://github.digitas.fr/settings/ssh)
 
 * upload the worker:
 
@@ -28,7 +34,6 @@ Sync everything
 ---------------
 
 Queue a task to synchronize every subtrees:
-
 
     iron_worker queue git-subsync
 
@@ -45,7 +50,7 @@ And copy-paste the URL into Github: "Your Repository" > "Settings" > "Services H
 Build the deb package
 ---------------------
 
-Actual version of git-core on iron VM (v1.7.9.3 on Ubuntu Linux 12.04 x64) doesn't support "subtree" command.
+Current version of git-core on iron VM (v1.7.9.3 on Ubuntu Linux 12.04 x64) doesn't support "subtree" command.
 So we need to build a deb package to add the original git-subtree script (https://github.com/apenwarr/git-subtree/tree/master)
 
     sudo dpkg-deb --build git-subtree

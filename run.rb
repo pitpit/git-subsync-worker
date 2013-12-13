@@ -32,7 +32,8 @@ end
 
 if repositories.count > 0
 
-    cmd = "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && export GIT_SSL_NO_VERIFY=true;\n"
+    cmd = "eval `ssh-agent` && ssh-add id_rsa;\n"
+    cmd += "export GIT_EXEC_PATH=`pwd`/__debs__/usr/lib/git-core && export GIT_SSL_NO_VERIFY=true;\n"
     # cmd = "export GIT_SSL_NO_VERIFY=true;\n"
 
     repositories.each do |repository|
@@ -57,6 +58,8 @@ if repositories.count > 0
             cmd += " && cd " + dir
 
             subtrees.each do |subtree|
+
+                puts "* sync #{subtree['path']} to #{subtree['dest']}"
                 #cmd += " && git subtree push --prefix=" + subtree['path'] + " " + subtree['dest'] + " " + subtree['branch']
 
                 branch = Digest::MD5.hexdigest(subtree['path'])
