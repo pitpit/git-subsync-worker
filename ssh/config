@@ -1,0 +1,11 @@
+Host github.com
+    StrictHostKeyChecking no
+    CheckHostIP no
+    UserKnownHostsFile=/dev/null
+    IdentityFile ~/.ssh/id_rsa
+
+Host github.digitas.fr
+    StrictHostKeyChecking no
+    CheckHostIP no
+    UserKnownHostsFile=/dev/null
+    IdentityFile ~/.ssh/id_rsa

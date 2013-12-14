@@ -1,5 +1,5 @@
 config.json
 iron.json
 __debs__/
-id_rsa*
+ssh/id_rsa*
 .DS_Store

@@ -3,9 +3,10 @@ full_remote_build true
 runtime "ruby"
 
 file "config.json"
-file "id_rsa"
+file "ssh/id_rsa"
+file "ssh/config"
 
-deb "git_1.7.9.5-1_amd64.deb"
-deb "git-subtree.deb"
+deb "debs/git_1.7.9.5-1_amd64.deb"
+deb "debs/git-subtree.deb"
 
 exec "run.rb"

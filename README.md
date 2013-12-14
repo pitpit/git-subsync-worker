@@ -19,10 +19,10 @@ Installation
 * Generate SSH keys if needed to connect to your repositories
 
 ```
-ssh-keygen -t rsa -C "sync-workers" -f id_rsa
+ssh-keygen -t rsa -C "sync-workers" -f ssh/id_rsa
 ```
 
-* add the public key content to your github account (https://github.digitas.fr/settings/ssh)
+* add the public key content to your github account (https://github.com/settings/ssh)
 
 * upload the worker:
 
