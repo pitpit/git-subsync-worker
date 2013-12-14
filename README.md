@@ -10,11 +10,11 @@ Installation
 
 * [Install Iron CLI](http://dev.iron.io/worker/reference/cli/#installing)
 
-* dowload `iron.json` into root directory to allow iron CLI to access your project
+* Dowload `iron.json` into root directory to allow iron CLI to access your project
 
 > In the top right of the dashboard, click on the key icon then click on "Download json file"
 
-* copy `config.json.sample` to `config.json` and edit it according to your needs
+* Copy `config.json.sample` to `config.json` and edit it according to your needs
 
 * Generate SSH keys if needed to connect to your repositories
 
@@ -22,9 +22,9 @@ Installation
 ssh-keygen -t rsa -C "sync-workers" -f ssh/id_rsa
 ```
 
-* add the public key content to your github account (https://github.com/settings/ssh)
+* Add the public key content to your github account (https://github.com/settings/ssh)
 
-* upload the worker:
+* Upload the worker:
 
 ```
 iron_worker upload git-subsync.worker
@@ -47,11 +47,11 @@ If you want to sync subtree on commit:
 And copy-paste the URL into Github: "Your Repository" > "Settings" > "Services Hooks" > "WebHook URLs"
 
 
-Build the deb package
----------------------
+Build the deb package (for dev)
+-------------------------------
 
 Current version of git-core on iron VM (v1.7.9.3 on Ubuntu Linux 12.04 x64) doesn't support "subtree" command.
-So we need to build a deb package to add the original git-subtree script (https://github.com/apenwarr/git-subtree/tree/master)
+So we need to build a deb package to add the original git-subtree script (https://github.com/apenwarr/git-subtree/tree/master) to iron worker.
 
     sudo dpkg-deb --build git-subtree
 
