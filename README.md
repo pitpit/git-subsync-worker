@@ -55,3 +55,7 @@ So we need to build a deb package to add the original git-subtree script (https:
 
     sudo dpkg-deb --build git-subtree
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pitpit/git-subsync-worker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
